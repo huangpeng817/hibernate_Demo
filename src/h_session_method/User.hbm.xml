@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="h_session_method">
+
+	<!-- name属性：哪个类 table属性：对应哪个表，如果不写，默认的表名就是类的简单名称 -->
+	<class name="User" table="user" lazy="false">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" type="string" column="name" length="20" />
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="e_hbm_collection">
+
+	<!-- name属性：哪个类 table属性：对应哪个表，如果不写，默认的表名就是类的简单名称 -->
+	<class name="User" table="user">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" type="string" column="name" length="20"
+			not-null="true" />
+
+		<set name="addressSet" table="user_addressSet" order-by="address DESC">  <!-- sort="natural" -->
+			<key column="userId"></key>
+			<element type="string" column="address"></element>
+		</set>
+
+		<list name="addressList" table="user_addressList">
+			<key column="userId"></key>
+			<list-index column="idx"></list-index>
+			<element column="address" type="string"></element>
+		</list>
+		
+		<array name="addressArray" table="user_addressArray">
+			<key column="userId"></key>
+			<list-index column="idx"></list-index>
+			<element column="address" type="string"></element>
+		</array>
+		
+		<map name="addressMap" table="user_addressMap">
+			<key column="userId"></key>
+			<map-key column="key_" type="string"></map-key>
+			<element column="address" type="string"></element>
+		</map>
+		
+		<bag name="addressBag" table="user_addressBag">
+			<key column="userId"></key>
+			<element column="address" type="string"></element>
+		</bag>
+		
+	</class>
+
+</hibernate-mapping>

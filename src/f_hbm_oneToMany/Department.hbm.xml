@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="f_hbm_oneToMany">
+
+	<!-- name属性：哪个类 table属性：对应哪个表，如果不写，默认的表名就是类的简单名称 -->
+	<class name="Department" table="department">
+		<id name="id" column="id">
+			<generator class="native" />
+		</id>
+		<property name="name" type="string" column="name" length="20"
+			not-null="true" />
+		<!-- employees属性，Set集合，本类与 Employee一对多的关系 -->	
+		<set name="employees" inverse="true" cascade="save-update">
+			<key column="departmentId"></key>
+			<one-to-many class="Employee" />
+		</set>
+	</class>
+
+</hibernate-mapping>
