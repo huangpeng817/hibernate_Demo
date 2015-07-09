@@ -1,7 +1,5 @@
 package h_session_method;
 
-import javax.jws.soap.SOAPBinding.Use;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
