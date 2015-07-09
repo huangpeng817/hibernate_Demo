@@ -87,7 +87,17 @@ public class App {
 
 			User user = (User) session.get(User.class, 5); // 持久化
 			session.flush();
+			System.out.println("第一次获取用户名："+user.getName());
 			System.out.println(user.getClass());
+			
+			session.refresh(user);
+			
+//			session.clear();
+//			user = (User) session.get(User.class, 5);
+			
+			System.out.println("第二次获取用户名："+user.getName());
+			
+			System.out.println("第三次获取用户名："+user.getName());
 
 			tx.commit(); // 必须提交事务才能持久化成功
 		} catch (Exception e) {
@@ -154,7 +164,6 @@ public class App {
 				User user = new User();
 				user.setName("测试");
 				session.save(user);
-
 //				if (i % 10 == 0) {
 //					session.flush(); // 先刷出
 //					session.clear(); // 再清空

@@ -22,6 +22,9 @@
 		 -->
 		<property name="hbm2ddl.auto">update</property>
 	
+		<!-- 设置事务隔离级别 -->
+		<property name="hibernate.connection.isolation">1</property>
+	
 	
 		<!-- 导入映射文件 -->
 		<!-- <mapping resource="cn/hp/domain/News.hbm.xml"/> -->
